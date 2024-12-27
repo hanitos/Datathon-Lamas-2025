@@ -35,7 +35,13 @@ t_age_sex_df <- transpose(age_sex_df)
 t_age_sex_df <-  t_age_sex_df %>% rename(percentage = V1)
 t_age_sex_df$age = colnames(age_sex_df) 
 t_age_sex_df$sex = str_split(t_age_sex_df$age, "_", simplify=TRUE)[,1]
-t_age_sex_df$age = substring(t_age_sex_df$age,3,length(t_age_sex_df$age))
+t_age_sex_df$age = substring(t_age_sex_df$age,3)
+
+t_age_sex_df$age <- factor(t_age_sex_df$age, levels = c('age0_4_pcnt',	'age5_9_pcnt',	'age10_14_pcnt',
+                                                        'age15_19_pcnt',	'age20_24_pcnt',	'age25_29_pcnt',	'age30_34_pcnt',	
+                                                        'age35_39_pcnt',	'age40_44_pcnt',	'age45_49_pcnt',	'age50_54_pcnt',	
+                                                        'age55_59_pcnt',	'age60_64_pcnt',	'age65_69_pcnt',	'age70_74_pcnt',	
+                                                        'age75_79_pcnt',	'age80_84_pcnt',	'age85_89_pcnt',	'age90_pcnt'))
 
 
 ggplot(t_age_sex_df) + 
